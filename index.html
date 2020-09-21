@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" href="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css" type="text/css"/>
+	<script src="https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"></script>
+<head>
+    
+</head>
+<body>
+	<div style="width: 890px; height: 440px;">
+		<video id='video-id'>
+			<source src='https://upload.wikimedia.org/wikipedia/commons/2/22/Volcano_Lava_Sample.webm' type='video/mp4'/>
+		</video>
+	</div>
+	
+    <script>
+		var myFP = fluidPlayer(
+        'video-id',
+        {
+            layoutControls:
+			{
+				fillToContainer: true,
+				primaryColor: false,
+				posterImage: false,
+				autoPlay: false,
+				playButtonShowing: true,
+				playPauseAnimation: true,
+				mute: false,
+				logo:
+				{
+					imageUrl: null,
+					position: 'top left',
+					clickUrl: null,
+					opacity: 1,
+					mouseOverImageUrl: null,
+					imageMargin: '2px',
+					hideWithControls: false,
+					showOverAds: false
+				},
+				htmlOnPauseBlock:
+				{
+					html: null,
+					height: null,
+					width: null
+				},
+				allowDownload: false,
+				allowTheatre: true,
+				playbackRateEnabled: false,
+				controlBar:
+				{
+					autoHide: false,
+					autoHideTimeout: 3,
+					animated: true
+				},
+			},
+			vastOptions: {
+				 adList:
+				[
+					{
+						roll: 'preRoll',
+						vastTag: 'https://rtb.adstest.tbhost.org/v/?guid=videoGuid&prid=100&pid=101_10_0',
+					},
+					{
+						roll: 'postRoll',
+						vastTag: 'https://rtb.adstest.tbhost.org/v/?guid=videoGuid&prid=100&pid=101_10_0',
+					},
+				]
+			}
+		}
+    );
+	</script>
+</body>
+</html>
