@@ -730,13 +730,13 @@
         null == g || g.body.appendChild(y),
           null == y ||
             y.addEventListener("load", function () {
-              k();
+              T();
             }),
           null == y ||
             y.addEventListener("error", function () {
               l.log(new n.ReinitError("Ошибка загрузки VPAID")), f(null);
             });
-        const k = () => {
+        const T = () => {
           try {
             const e = m.contentDocument.defaultView.getVPAIDAd(),
               i = t(e, o, a, r, s, c, u, l, d, h);
@@ -1145,7 +1145,7 @@
             });
       },
     };
-    function k(e, t) {
+    function T(e, t) {
       var i = new h(t);
       return (
         y.childrenByName(e, "Companion").forEach(function (e) {
@@ -1194,7 +1194,7 @@
         i
       );
     }
-    var T = (function (e) {
+    var k = (function (e) {
         function t() {
           var e =
             arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {};
@@ -1254,7 +1254,7 @@
       };
     function w(e, t) {
       var i = void 0,
-        n = new T(t);
+        n = new k(t);
       n.duration = y.parseDuration(
         y.parseNodeText(y.childByName(e, "Duration"))
       );
@@ -1508,7 +1508,7 @@
                     (s = R(r, t)) && i.creatives.push(s);
                     break;
                   case "CompanionAds":
-                    (s = k(r, t)) && i.creatives.push(s);
+                    (s = T(r, t)) && i.creatives.push(s);
                 }
               }
             });
@@ -1639,12 +1639,12 @@
       if (t) e.call(i);
       else for (var n = e.length, r = H(e, n), s = 0; s < n; ++s) r[s].call(i);
     }
-    function D(e, t, i, n) {
+    function V(e, t, i, n) {
       if (t) e.call(i, n);
       else
         for (var r = e.length, s = H(e, r), o = 0; o < r; ++o) s[o].call(i, n);
     }
-    function V(e, t, i, n, r) {
+    function D(e, t, i, n, r) {
       if (t) e.call(i, n, r);
       else
         for (var s = e.length, o = H(e, s), a = 0; a < s; ++a)
@@ -1784,10 +1784,10 @@
             N(i, l, this);
             break;
           case 2:
-            D(i, l, this, arguments[1]);
+            V(i, l, this, arguments[1]);
             break;
           case 3:
-            V(i, l, this, arguments[1], arguments[2]);
+            D(i, l, this, arguments[1], arguments[2]);
             break;
           case 4:
             I(i, l, this, arguments[1], arguments[2], arguments[3]);
@@ -1943,7 +1943,7 @@
         return null;
       }
     }
-    var X = {
+    var Q = {
       get: function (e, t, i) {
         if ("https:" === window.location.protocol && 0 === e.indexOf("http://"))
           return i(new Error("XHRURLHandler: Cannot go from HTTPS to HTTP."));
@@ -1968,14 +1968,14 @@
         return !!$();
       },
     };
-    var Q = {
+    var X = {
         get: function (e, t, i) {
           return (
             i || ("function" == typeof t && (i = t), (t = {})),
             "undefined" == typeof window || null === window
               ? Y.get(e, t, i)
-              : X.supported()
-              ? X.get(e, t, i)
+              : Q.supported()
+              ? Q.get(e, t, i)
               : z.supported()
               ? z.get(e, t, i)
               : i(
@@ -2097,7 +2097,7 @@
                     timeout: e.timeout,
                     withCredentials: e.withCredentials,
                   }),
-                  (this.urlHandler = e.urlHandler || e.urlhandler || Q),
+                  (this.urlHandler = e.urlHandler || e.urlhandler || X),
                   (this.vastVersion = null);
               },
             },
@@ -2566,7 +2566,7 @@
             a.trackingEvents[c] = u.slice(0);
           }
           return (
-            a.creative instanceof T
+            a.creative instanceof k
               ? a._initLinearTracking()
               : a._initVariationTracking(),
             e &&
@@ -2901,10 +2901,10 @@
                 ? o.you_play(l)
                 : (yield l.play(), l.paused && l.click());
           }),
-        k = () => {
+        T = () => {
           t.trackImpression();
         },
-        T = () => {
+        k = () => {
           "youtube" === f ? o.you_pause(l) : l.pause(),
             e.dispatchEvent(a.playEvent),
             t.setPaused(!1);
@@ -2942,15 +2942,15 @@
         e.addEventListener(
           "canplay",
           () => {
-            e.addEventListener("play", k, { once: !0 }),
-              e.addEventListener("play", T),
+            e.addEventListener("play", T, { once: !0 }),
+              e.addEventListener("play", k),
               e.addEventListener("pause", A),
               e.addEventListener("ended", w),
               e.addEventListener("volumechange", E),
               e.addEventListener("timeupdate", R),
               e.addEventListener("click", L),
               u.addEventListener("click", _),
-              "other" === f && (l.addEventListener("timeupdate", T), (m = !0));
+              "other" === f && (l.addEventListener("timeupdate", k), (m = !0));
           },
           { once: !0 }
         ),
@@ -2958,7 +2958,7 @@
           window.open(e);
         });
       const C = () => {
-        e.removeEventListener("play", T),
+        e.removeEventListener("play", k),
           null !== g && g.removeEventListener("error", b),
           e.removeEventListener("error", b),
           e.removeEventListener("pause", A),
@@ -2967,7 +2967,7 @@
           e.removeEventListener("timeupdate", R),
           e.removeEventListener("click", L),
           u.removeEventListener("click", _),
-          "other" === f && l.removeEventListener("timeupdate", T);
+          "other" === f && l.removeEventListener("timeupdate", k);
       };
       t.on("skip", () => {
         y(), C(), i.log(new s.TerminateError("skip", d));
@@ -3669,6 +3669,15 @@
       AdPaused: () => {},
       AdClickThru: () => {
         i.click();
+      },
+      AdVideoFirstQuartile: () => {
+        i.setProgress(25);
+      },
+      AdVideoMidpoint: () => {
+        i.setProgress(50);
+      },
+      AdVideoThirdQuartile: () => {
+        i.setProgress(75);
       },
     });
   },
