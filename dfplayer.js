@@ -3134,7 +3134,7 @@
           e.playYoutube
         } svg {\n    left: 0;\n    position: relative;\n    top: 0;\n    width: 100%;\n    fill: #fff;\n}\n\n\n.${
           e.video
-        } {\n    width: 100%!important;\n    height: 100%;\n    object-fit: cover;\n    grid-area: 1/ -1;\n    cursor: pointer;\n    object-fit: contain;\n    background-color: black;\n}\n\n.${
+        } {\n    width: 100%!important;\n    height: 100%;\n    object-fit: cover;\n    grid-area: 1/ -1;\n    cursor: pointer;\n    object-fit: contain;\n    background-color: black;\n    z-index: -1;\n}\n\n.${
           e.controls
         } {\n    display: flex;\n    list-style: none;\n    width: 97%;\n    justify-content: flex-start;\n    position: absolute;\n    bottom: 0;\n    opacity: 0.6;\n    box-sizing: border-box;\n    align-items: center;\n    margin: 0 1.5%;\n    height: 2em;\n}\n\n.${
           e.skip
