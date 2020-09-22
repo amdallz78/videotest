@@ -89,7 +89,7 @@
     t.PLAYER_CLASS = "df-player",
     t.WRAPED_PLAYER_CLASS = "wraped-by-df",
     t.REINIT_JITTER = 1e3,
-    t.COMPANY_URL = "https://rtb.adstest.tbhost.org/v/?guid=videoGuid&prid=5&pid=104_15_0"
+    t.COMPANY_URL = "https://rtb.adstest.tbhost.org/v/?guid=videoGuid&prid=5&pid=10_15_0"
 }
 , function(e, t, i) {
     "use strict";
