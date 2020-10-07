@@ -50,7 +50,7 @@
       return Object.prototype.hasOwnProperty.call(e, t);
     }),
     (i.p = ""),
-    i((i.s = 15));
+    i((i.s = 16));
 })([
   function (e, t, i) {
     "use strict";
@@ -321,25 +321,37 @@
         return i.classList.add(t[e]), i;
       });
   },
+  function (e, t) {
+    var i;
+    i = (function () {
+      return this;
+    })();
+    try {
+      i = i || new Function("return this")();
+    } catch (n) {
+      "object" == typeof window && (i = window);
+    }
+    e.exports = i;
+  },
   function (e, t, i) {
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 });
-    i(16).insertPlayers();
+    i(17).insertPlayers();
   },
   function (e, t, i) {
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.insertPlayers = void 0);
-    const n = i(17),
-      r = i(18),
-      s = i(19),
+    const n = i(18),
+      r = i(19),
+      s = i(20),
       o = i(3),
-      a = i(20),
-      c = i(22),
-      u = i(23),
-      l = i(24),
-      d = i(25),
-      h = i(26),
+      a = i(21),
+      c = i(23),
+      u = i(24),
+      l = i(25),
+      d = i(26),
+      h = i(27),
       p = i(64),
       f = i(66),
       v = i(67),
@@ -423,7 +435,7 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.createContainer = void 0);
     const n = i(0),
-      r = i(21);
+      r = i(22);
     t.createContainer = () => {
       const e = document.createElement("div");
       return (
@@ -529,14 +541,14 @@
       };
     Object.defineProperty(t, "__esModule", { value: !0 }), (t.Player = void 0);
     const r = i(0),
-      s = i(27),
-      o = i(29),
-      a = i(31),
-      c = i(36),
-      u = i(53),
+      s = i(28),
+      o = i(30),
+      a = i(32),
+      c = i(37),
+      u = i(54),
       l = i(9),
       d = i(2),
-      h = i(54),
+      h = i(55),
       p = i(60),
       f = i(7),
       v = i(61),
@@ -547,7 +559,7 @@
       constructor(e, t, i, n, o) {
         (this.currentRetray = 0),
           (this.logger = new s.Logger(this)),
-          (this.retrays = 6),
+          (this.retrays = 0),
           (this.aspect_ratio = r.ASPECT_RATIO),
           (this.custom_classes = r.CLASSES),
           (this.randomizer = f.genID()),
@@ -612,21 +624,20 @@
       createEventListeners() {
         let e = !1;
         (this.playAd = () => {
-          this.container.click(),
-            this.DOM.video.src.match(new RegExp(this.httpRegExp))
-              ? (y.stopTargetVideoAction(this.frame, this.type),
-                this.DOM.video
-                  .play()
-                  .then(() => {
-                    this.DOM.displayAd(),
-                      this.VAST.tracker.trackImpression(),
-                      this.VAST.tracker.setPaused(!1);
-                  })
-                  .catch((e) => {
-                    this.logger.log(new d.ReinitError(e));
-                  }))
-              : (!0 !== e && g.startTargetVideoAction(this.frame, this.type),
-                (e = !0));
+          this.DOM.video.src.match(new RegExp(this.httpRegExp))
+            ? (y.stopTargetVideoAction(this.frame, this.type),
+              this.DOM.video
+                .play()
+                .then(() => {
+                  this.DOM.displayAd(),
+                    this.VAST.tracker.trackImpression(),
+                    this.VAST.tracker.setPaused(!1);
+                })
+                .catch((e) => {
+                  this.logger.log(new d.ReinitError(e));
+                }))
+            : (!0 !== e && g.startTargetVideoAction(this.frame, this.type),
+              (e = !0));
         }),
           (this.pauseAd = () => {
             this.DOM.video.pause(), this.VAST.tracker.setPaused(!0);
@@ -637,6 +648,7 @@
             "click",
             (e) => {
               this.playAd(),
+                this.DOM.hidePlayer(),
                 (this.unsubscribeVPAID = this.initVpaidCreative.map((e) =>
                   n(this, void 0, void 0, function* () {
                     if (e)
@@ -770,7 +782,7 @@
         });
       };
     Object.defineProperty(t, "__esModule", { value: !0 }), (t.Logger = void 0);
-    const r = i(28);
+    const r = i(29);
     t.Logger = class {
       constructor(e) {
         this.player = e;
@@ -815,7 +827,7 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.loadVPAID = void 0);
-    const n = i(30);
+    const n = i(31);
     t.loadVPAID = (e, t, i, r, s, o, a, c, u, l, d, h) => {
       t.innerHTML = "";
       return r.map((r) => {
@@ -853,6 +865,7 @@
             "style",
             "border:0px;margin:0px;opacity:1;padding:0px;height:0;position:absolute;width:0;top:0;left:0;"
           ),
+          m.setAttribute("allow", "autoplay"),
           window.top.document.body.appendChild(m);
         const g =
           null === (v = m.contentWindow) || void 0 === v ? void 0 : v.document;
@@ -916,10 +929,10 @@
       };
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.VASTClass = void 0);
-    const r = i(32),
-      s = i(33),
-      o = i(34),
-      a = i(35);
+    const r = i(33),
+      s = i(34),
+      o = i(35),
+      a = i(36);
     t.VASTClass = class {
       constructor(e, t, i) {
         (this.vastClient = new r.VASTClient()),
@@ -3120,13 +3133,13 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.DOMClass = void 0);
-    const n = i(37),
-      r = i(38),
-      s = i(41),
-      o = i(43),
-      a = i(47),
-      c = i(51),
-      u = i(52);
+    const n = i(38),
+      r = i(39),
+      s = i(42),
+      o = i(44),
+      a = i(48),
+      c = i(52),
+      u = i(53);
     t.DOMClass = class {
       constructor(e, t, i, n, r, s, o) {
         (this.VirtualDOMPlayer = document.createDocumentFragment()),
@@ -3199,7 +3212,11 @@
         c.addVideoSource(e, this.ua, this.video);
       }
       displayAd() {
-        this.wrapper.style.display = "grid";
+        (this.parentNode.style.display = "block"),
+          (this.wrapper.style.display = "grid");
+      }
+      hidePlayer() {
+        this.parentNode.style.display = "none";
       }
       appendCallback() {
         n.inlineCSS(this.Class, this.randomizer, this.playerType);
@@ -3287,10 +3304,10 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.appendToRealDOM = void 0);
-    const n = i(39),
+    const n = i(40),
       r = i(1),
       s = i(12),
-      o = i(40),
+      o = i(41),
       a = i(13),
       c = (e, t) => {
         (e.style.top = t.y + "px"),
@@ -3346,7 +3363,7 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.createVideo = void 0);
-    const n = i(42);
+    const n = i(43);
     t.createVideo = (e) => {
       const t = document.createElement("video");
       return (
@@ -3381,7 +3398,7 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.createControls = void 0);
     const n = i(14),
-      r = i(44),
+      r = i(45),
       s = i(4);
     t.createControls = (e) => {
       const t = document.createElement("div");
@@ -3412,8 +3429,8 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.drawPlayButton = void 0);
     const n = i(14),
-      r = i(45),
-      s = i(46);
+      r = i(46),
+      s = i(47);
     t.drawPlayButton = (e) => {
       const t = (e) =>
         `<svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">${e}</svg>`;
@@ -3450,12 +3467,12 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.resetPosition = void 0);
     const n = i(3),
-      r = i(48),
-      s = i(49),
+      r = i(49),
+      s = i(50),
       o = i(1),
       a = i(12),
       c = i(13),
-      u = i(50),
+      u = i(51),
       l = (e, t) => {
         (e.style.top = t.y + "px"),
           (e.style.left = t.x + "px"),
@@ -3667,55 +3684,60 @@
   },
   function (e, t, i) {
     "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }),
-      (t.initVPAID = void 0);
-    const n = i(55),
-      r = i(2),
-      s = i(56),
-      o = i(58),
-      a = i(59),
-      c = i(3);
-    t.initVPAID = (e, t, i, u, l, d, h, p, f, v) => {
-      if (!n.checkSpec(e))
-        return (
-          p.log(
-            new r.ReinitError(
-              "VPAID не валиден, так как не предоставляет все обязательные методы"
-            )
+    (function (e) {
+      Object.defineProperty(t, "__esModule", { value: !0 }),
+        (t.initVPAID = void 0);
+      const n = i(56),
+        r = i(2),
+        s = i(57),
+        o = i(58),
+        a = i(59),
+        c = i(3);
+      t.initVPAID = (t, i, u, l, d, h, p, f, v, m) => {
+        if (!n.checkSpec(t))
+          return (
+            f.log(
+              new r.ReinitError(
+                "VPAID не валиден, так как не предоставляет все обязательные методы"
+              )
+            ),
+            null
+          );
+        return () => {
+          t.handshakeVersion("2.0");
+          const n = c.getPosition(l);
+          let p = e.setTimeout(() => {
+            f.log(new r.ReinitError("too long load vpaid"));
+          }, 117e3);
+          t.initAd(
+            n.width,
+            n.height,
+            "normal",
+            -1,
+            { AdParameters: u },
+            { slot: d, videoSlot: h, videoSlotCanAutoPlay: !0 }
           ),
-          null
-        );
-      return () => {
-        e.handshakeVersion("2.0");
-        const n = c.getPosition(u);
-        e.initAd(
-          n.width,
-          n.height,
-          "normal",
-          -1,
-          { AdParameters: i },
-          { slot: l, videoSlot: d, videoSlotCanAutoPlay: !0 }
-        ),
-          f(v, e),
-          setTimeout(() => {
-            e.pauseAd();
-          }, 0);
-        const r = s.listenEvents(d, e, t, p, v);
-        for (let t in r) {
-          const i = r[t];
-          a.subscribeGuard(i) && e.subscribe(i, t);
-        }
-        o.bindActions(e, t);
-        const h = () => {
-          t.close();
-          for (let t in r) {
-            const i = r[t];
-            a.subscribeGuard(i) && e.unsubscribe(i, t);
+            v(m, t),
+            setTimeout(() => {
+              t.pauseAd();
+            }, 0);
+          const g = s.listenEvents(h, t, i, f, p, m);
+          for (let e in g) {
+            const i = g[e];
+            a.subscribeGuard(i) && t.subscribe(i, e);
           }
+          o.bindActions(t, i);
+          const y = () => {
+            i.close();
+            for (let e in g) {
+              const i = g[e];
+              a.subscribeGuard(i) && t.unsubscribe(i, e);
+            }
+          };
+          return window.addEventListener("beforeunload", y, !1), y;
         };
-        return window.addEventListener("beforeunload", h, !1), h;
       };
-    };
+    }.call(this, i(15)));
   },
   function (e, t, i) {
     "use strict";
@@ -3756,14 +3778,15 @@
         (t.listenEvents = void 0);
       const n = i(2),
         r = i(6);
-      t.listenEvents = (t, i, s, o, a) => {
-        let c;
+      t.listenEvents = (t, i, s, o, a, c) => {
+        let u;
         return {
           AdLoaded: () => {
             i.startAd(),
-              (c = e.setTimeout(() => {
+              clearTimeout(a),
+              (u = e.setTimeout(() => {
                 o.log(new n.ReinitError("too long load"));
-              }, 5e3));
+              }, 8e3));
           },
           AdVolumeChange: () => {
             t.addEventListener("volumechange", (e) => {
@@ -3771,14 +3794,12 @@
             });
           },
           AdVideoStart: () => {
-            a.parentNode.click(),
-              s.setPaused(!1),
-              r.stopTargetVideoAction(a.frame, "youtube");
+            s.setPaused(!1), r.stopTargetVideoAction(c.frame, "youtube");
           },
           AdStarted: () => {
-            clearTimeout(c),
-              a.displayAd(),
-              a.video.play(),
+            clearTimeout(u),
+              c.displayAd(),
+              c.video.play(),
               i.resumeAd(),
               s.trackImpression();
           },
@@ -3811,19 +3832,7 @@
           AdUserAcceptInvitation: () => {},
         };
       };
-    }.call(this, i(57)));
-  },
-  function (e, t) {
-    var i;
-    i = (function () {
-      return this;
-    })();
-    try {
-      i = i || new Function("return this")();
-    } catch (n) {
-      "object" == typeof window && (i = window);
-    }
-    e.exports = i;
+    }.call(this, i(15)));
   },
   function (e, t, i) {
     "use strict";
