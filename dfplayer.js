@@ -50,7 +50,7 @@
       return Object.prototype.hasOwnProperty.call(e, t);
     }),
     (i.p = ""),
-    i((i.s = 12));
+    i((i.s = 15));
 })([
   function (e, t, i) {
     "use strict";
@@ -139,6 +139,62 @@
   },
   function (e, t, i) {
     "use strict";
+    var n =
+      (this && this.__awaiter) ||
+      function (e, t, i, n) {
+        return new (i || (i = Promise))(function (r, s) {
+          function o(e) {
+            try {
+              c(n.next(e));
+            } catch (t) {
+              s(t);
+            }
+          }
+          function a(e) {
+            try {
+              c(n.throw(e));
+            } catch (t) {
+              s(t);
+            }
+          }
+          function c(e) {
+            var t;
+            e.done
+              ? r(e.value)
+              : ((t = e.value),
+                t instanceof i
+                  ? t
+                  : new i(function (e) {
+                      e(t);
+                    })).then(o, a);
+          }
+          c((n = n.apply(e, t || [])).next());
+        });
+      };
+    Object.defineProperty(t, "__esModule", { value: !0 }),
+      (t.stopTargetVideoAction = void 0);
+    const r = i(10);
+    t.stopTargetVideoAction = (e, t) =>
+      n(void 0, void 0, void 0, function* () {
+        switch (t) {
+          case "youtube":
+            r.you_pause(e);
+            break;
+          case "youtube":
+            e.pause();
+            break;
+          default:
+            try {
+              r.you_pause(e);
+            } catch (i) {}
+            try {
+              e.pause();
+            } catch (i) {}
+        }
+      });
+  },
+  function (e, t, i) {
+    "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.genID = void 0),
       (t.genID = function () {
@@ -167,8 +223,72 @@
   },
   function (e, t, i) {
     "use strict";
+    Object.defineProperty(t, "__esModule", { value: !0 }),
+      (t.you_play = t.you_pause = void 0);
+    const n = (e, t) => {
+      var i;
+      null === (i = e.contentWindow) ||
+        void 0 === i ||
+        i.postMessage(
+          JSON.stringify({ event: "command", func: t, args: [] }),
+          "*"
+        );
+    };
+    (t.you_pause = (e) => {
+      n(e, "pauseVideo");
+    }),
+      (t.you_play = (e) => {
+        n(e, "playVideo");
+      });
+  },
+  function (e, t, i) {
+    "use strict";
+    var n =
+      (this && this.__awaiter) ||
+      function (e, t, i, n) {
+        return new (i || (i = Promise))(function (r, s) {
+          function o(e) {
+            try {
+              c(n.next(e));
+            } catch (t) {
+              s(t);
+            }
+          }
+          function a(e) {
+            try {
+              c(n.throw(e));
+            } catch (t) {
+              s(t);
+            }
+          }
+          function c(e) {
+            var t;
+            e.done
+              ? r(e.value)
+              : ((t = e.value),
+                t instanceof i
+                  ? t
+                  : new i(function (e) {
+                      e(t);
+                    })).then(o, a);
+          }
+          c((n = n.apply(e, t || [])).next());
+        });
+      };
+    Object.defineProperty(t, "__esModule", { value: !0 }),
+      (t.startTargetVideoAction = void 0);
+    const r = i(10);
+    t.startTargetVideoAction = (e, t) =>
+      n(void 0, void 0, void 0, function* () {
+        "youtube" === t
+          ? r.you_play(e)
+          : (yield e.play(), e.paused && e.click());
+      });
+  },
+  function (e, t, i) {
+    "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }), (t.isVkBox = void 0);
-    const n = i(7);
+    const n = i(8);
     t.isVkBox = () => {
       var e;
       if (!n.isVk()) return !1;
@@ -204,25 +324,25 @@
   function (e, t, i) {
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 });
-    i(13).insertPlayers();
+    i(16).insertPlayers();
   },
   function (e, t, i) {
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.insertPlayers = void 0);
-    const n = i(14),
-      r = i(15),
-      s = i(16),
+    const n = i(17),
+      r = i(18),
+      s = i(19),
       o = i(3),
-      a = i(17),
-      c = i(19),
-      u = i(20),
-      l = i(21),
-      d = i(22),
-      h = i(23),
-      p = i(61),
-      f = i(63),
-      v = i(64),
+      a = i(20),
+      c = i(22),
+      u = i(23),
+      l = i(24),
+      d = i(25),
+      h = i(26),
+      p = i(64),
+      f = i(66),
+      v = i(67),
       m = i(0);
     t.insertPlayers = () => {
       let e = window.location.href;
@@ -303,7 +423,7 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.createContainer = void 0);
     const n = i(0),
-      r = i(18);
+      r = i(21);
     t.createContainer = () => {
       const e = document.createElement("div");
       return (
@@ -323,7 +443,7 @@
   function (e, t, i) {
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }), (t.wrap = void 0);
-    const n = i(6),
+    const n = i(7),
       r = i(0);
     t.wrap = (e, t) => {
       const i = e.id || n.genID();
@@ -336,7 +456,7 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.isOutstream = void 0);
     const n = i(1),
-      r = i(7);
+      r = i(8);
     t.isOutstream = (e) => {
       if (n.isOk() || r.isVk()) return !1;
       const t = e.getAttribute("muted") && e.getAttribute("autoplay"),
@@ -409,18 +529,20 @@
       };
     Object.defineProperty(t, "__esModule", { value: !0 }), (t.Player = void 0);
     const r = i(0),
-      s = i(24),
-      o = i(26),
-      a = i(28),
-      c = i(34),
-      u = i(51),
-      l = i(8),
+      s = i(27),
+      o = i(29),
+      a = i(31),
+      c = i(36),
+      u = i(53),
+      l = i(9),
       d = i(2),
-      h = i(52),
-      p = i(57),
-      f = i(6),
-      v = i(58),
-      m = i(60);
+      h = i(54),
+      p = i(60),
+      f = i(7),
+      v = i(61),
+      m = i(63),
+      g = i(11),
+      y = i(6);
     t.Player = class {
       constructor(e, t, i, n, o) {
         (this.currentRetray = 0),
@@ -435,6 +557,7 @@
           (this.pauseAd = () => {}),
           (this.autoPlayFn = () => {}),
           (this.initVpaidCreative = []),
+          (this.httpRegExp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g),
           (this.url = e),
           (this.frame = n),
           (this.type = o),
@@ -477,25 +600,33 @@
                 this.DOM.progressBar,
                 this.type,
                 this.container
-              ),
-              this.create();
+              );
           } catch (e) {
             this.logger.log(new d.ReinitError(e));
           }
-          return "youtube" === this.type && v.sendMessage(this.frame), this;
+          return (
+            "youtube" === this.type && v.sendMessage(this.frame), this.create()
+          );
         });
       }
       createEventListeners() {
+        let e = !1;
         (this.playAd = () => {
           this.container.click(),
-            this.DOM.video
-              .play()
-              .then(() => {
-                this.DOM.displayAd(),
-                  this.VAST.tracker.trackImpression(),
-                  this.VAST.tracker.setPaused(!1);
-              })
-              .catch((e) => {});
+            this.DOM.video.src.match(new RegExp(this.httpRegExp))
+              ? (y.stopTargetVideoAction(this.frame, this.type),
+                this.DOM.video
+                  .play()
+                  .then(() => {
+                    this.DOM.displayAd(),
+                      this.VAST.tracker.trackImpression(),
+                      this.VAST.tracker.setPaused(!1);
+                  })
+                  .catch((e) => {
+                    this.logger.log(new d.ReinitError(e));
+                  }))
+              : (!0 !== e && g.startTargetVideoAction(this.frame, this.type),
+                (e = !0));
         }),
           (this.pauseAd = () => {
             this.DOM.video.pause(), this.VAST.tracker.setPaused(!0);
@@ -559,16 +690,16 @@
           e.remove();
         });
       }
-      trackerSendClose() {
+      trackerSendError() {
         try {
-          this.VAST.tracker.close();
+          this.VAST.tracker.errorWithCode("900", !0);
         } catch (e) {}
       }
       reInitByError() {
         if (
           ((this.container.style.display = "none"),
           (this.currentRetray += 1),
-          this.trackerSendClose(),
+          this.trackerSendError(),
           this.unsubscribeVastAndVpaid(),
           this.cleanStylesAndScripts(),
           this.currentRetray >= this.retrays)
@@ -579,9 +710,10 @@
               this.removeFromPage.bind(this)
             )
           );
-        const e = this.init.bind(this);
+        const e = this.init.bind(this),
+          t = this;
         setTimeout(() => {
-          e();
+          e(), t.playAd();
         }, r.REINIT_JITTER);
       }
       unsubscribeVastAndVpaid() {
@@ -638,14 +770,14 @@
         });
       };
     Object.defineProperty(t, "__esModule", { value: !0 }), (t.Logger = void 0);
-    const r = i(25);
+    const r = i(28);
     t.Logger = class {
       constructor(e) {
         this.player = e;
       }
       log(e) {
         return n(this, void 0, void 0, function* () {
-          if ("skip" !== e.message) {
+          if ("noError" !== e.message) {
             const t = r.errorCodesVAST[e.message] || "900";
             try {
               this.player.VAST.tracker.errorWithCode(t, parseInt(t) > 901);
@@ -683,7 +815,7 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.loadVPAID = void 0);
-    const n = i(27);
+    const n = i(30);
     t.loadVPAID = (e, t, i, r, s, o, a, c, u, l, d, h) => {
       t.innerHTML = "";
       return r.map((r) => {
@@ -784,10 +916,10 @@
       };
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.VASTClass = void 0);
-    const r = i(29),
-      s = i(30),
-      o = i(31),
-      a = i(32);
+    const r = i(32),
+      s = i(33),
+      o = i(34),
+      a = i(35);
     t.VASTClass = class {
       constructor(e, t, i) {
         (this.vastClient = new r.VASTClient()),
@@ -1194,7 +1326,7 @@
         i
       );
     }
-    var k = (function (e) {
+    var b = (function (e) {
         function t() {
           var e =
             arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {};
@@ -1218,7 +1350,7 @@
         }
         return s(t, d), t;
       })(),
-      b = function e() {
+      k = function e() {
         n(this, e),
           (this.program = null),
           (this.height = 0),
@@ -1254,7 +1386,7 @@
       };
     function w(e, t) {
       var i = void 0,
-        n = new k(t);
+        n = new b(t);
       n.duration = y.parseDuration(
         y.parseNodeText(y.childByName(e, "Duration"))
       );
@@ -1327,7 +1459,7 @@
       return (
         c &&
           y.childrenByName(c, "Icon").forEach(function (e) {
-            var t = new b();
+            var t = new k();
             (t.program = e.getAttribute("program")),
               (t.height = parseInt(e.getAttribute("height") || 0)),
               (t.width = parseInt(e.getAttribute("width") || 0)),
@@ -1493,7 +1625,7 @@
             y.childrenByName(r, "Creative").forEach(function (e) {
               var t = {
                 id: e.getAttribute("id") || null,
-                adId: x(e),
+                adId: S(e),
                 sequence: e.getAttribute("sequence") || null,
                 apiFramework: e.getAttribute("apiFramework") || null,
               };
@@ -1514,7 +1646,7 @@
             });
             break;
           case "Extensions":
-            S(i.extensions, y.childrenByName(r, "Extension"));
+            x(i.extensions, y.childrenByName(r, "Extension"));
             break;
           case "AdSystem":
             i.system = {
@@ -1588,7 +1720,7 @@
       )
         return t;
     }
-    function S(e, t) {
+    function x(e, t) {
       t.forEach(function (t) {
         var i = new c(),
           n = t.attributes,
@@ -1618,7 +1750,7 @@
         e.push(i);
       });
     }
-    function x(e) {
+    function S(e) {
       return (
         e.getAttribute("AdID") ||
         e.getAttribute("adID") ||
@@ -1635,11 +1767,11 @@
         ? U.defaultMaxListeners
         : e._maxListeners;
     }
-    function N(e, t, i) {
+    function V(e, t, i) {
       if (t) e.call(i);
       else for (var n = e.length, r = H(e, n), s = 0; s < n; ++s) r[s].call(i);
     }
-    function V(e, t, i, n) {
+    function N(e, t, i, n) {
       if (t) e.call(i, n);
       else
         for (var r = e.length, s = H(e, r), o = 0; o < r; ++o) s[o].call(i, n);
@@ -1719,7 +1851,7 @@
       for (var i = new Array(t); t--; ) i[t] = e[t];
       return i;
     }
-    function q() {
+    function z() {
       var e = void 0;
       return window.XDomainRequest && (e = new XDomainRequest()), e;
     }
@@ -1781,10 +1913,10 @@
         var l = "function" == typeof i;
         switch ((n = arguments.length)) {
           case 1:
-            N(i, l, this);
+            V(i, l, this);
             break;
           case 2:
-            V(i, l, this, arguments[1]);
+            N(i, l, this, arguments[1]);
             break;
           case 3:
             D(i, l, this, arguments[1], arguments[2]);
@@ -1901,7 +2033,7 @@
       (U.prototype.eventNames = function () {
         return this._eventsCount > 0 ? Reflect.ownKeys(this._events) : [];
       });
-    var z = {
+    var q = {
       get: function (e, t, i) {
         var n =
           "function" == typeof window.ActiveXObject
@@ -1912,7 +2044,7 @@
             new Error("FlashURLHandler: Microsoft.XMLDOM format not supported")
           );
         n.async = !1;
-        var r = q();
+        var r = z();
         r.open("GET", e),
           (r.timeout = t.timeout || 0),
           (r.withCredentials = t.withCredentials || !1),
@@ -1923,7 +2055,7 @@
           });
       },
       supported: function () {
-        return !!q();
+        return !!z();
       },
     };
     var Y = {
@@ -1976,8 +2108,8 @@
               ? Y.get(e, t, i)
               : Q.supported()
               ? Q.get(e, t, i)
-              : z.supported()
-              ? z.get(e, t, i)
+              : q.supported()
+              ? q.get(e, t, i)
               : i(
                   new Error(
                     "Current context is not supported by any of the default URLHandlers. Please provide a custom URLHandler"
@@ -2566,7 +2698,7 @@
             a.trackingEvents[c] = u.slice(0);
           }
           return (
-            a.creative instanceof k
+            a.creative instanceof b
               ? a._initLinearTracking()
               : a._initVariationTracking(),
             e &&
@@ -2887,96 +3019,95 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.commonActions = void 0);
     const r = i(2),
-      s = i(8),
-      o = i(33),
-      a = i(4),
-      c = i(0);
-    t.commonActions = (e, t, i, u, l, d, h, p, f, v) => {
-      let m = !1;
-      const g = e.querySelector("source:last-child"),
-        y = () =>
+      s = i(9),
+      o = i(4),
+      a = i(0),
+      c = i(6),
+      u = i(11);
+    t.commonActions = (e, t, i, l, d, h, p, f, v, m) => {
+      let g = !1;
+      const y = e.querySelector("source:last-child"),
+        T = () =>
           n(void 0, void 0, void 0, function* () {
-            l.classList.remove(c.WRAPED_PLAYER_CLASS),
-              "youtube" === f
-                ? o.you_play(l)
-                : (yield l.play(), l.paused && l.click());
+            d.classList.remove(a.WRAPED_PLAYER_CLASS),
+              u.startTargetVideoAction(d, v);
           }),
-        T = () => {
+        b = () => {
           t.trackImpression();
         },
         k = () => {
-          "youtube" === f ? o.you_pause(l) : l.pause(),
-            e.dispatchEvent(a.playEvent),
+          c.stopTargetVideoAction(d, v),
+            e.dispatchEvent(o.playEvent),
             t.setPaused(!1);
         },
-        b = () => {
-          C(),
-            m && "youtube" !== f && l.play(),
+        A = () => {
+          P(),
+            g && "youtube" !== v && d.play(),
             i.log(new r.ReinitError("402"));
         },
-        A = () => {
+        w = () => {
           t.setPaused(!0);
         },
-        w = () =>
+        E = () =>
           n(void 0, void 0, void 0, function* () {
-            t.complete(), y(), i.log(new s.TerminateError("skip", d));
+            t.complete(), T(), i.log(new s.TerminateError("skip", h));
           }),
-        E = (e) => {
+        L = (e) => {
           t.setMuted(e.target.muted);
         },
-        L = () => {
+        R = () => {
           t.click();
         },
-        R = (i) => {
+        _ = (i) => {
           t.setProgress(i.target.currentTime),
             ((e, t) => {
               const i = Math.floor((100 / e.duration) * e.currentTime);
               (t.value = i), (t.innerHTML = i + "% played");
-            })(e, p);
+            })(e, f);
         },
-        _ = () => {
+        C = () => {
           t.skip();
         };
-      e.addEventListener("error", b),
-        null !== g && g.addEventListener("error", b),
+      e.addEventListener("error", A),
+        null !== y && y.addEventListener("error", A),
         e.addEventListener(
           "canplay",
           () => {
-            e.addEventListener("play", T, { once: !0 }),
+            e.addEventListener("play", b, { once: !0 }),
               e.addEventListener("play", k),
-              e.addEventListener("pause", A),
-              e.addEventListener("ended", w),
-              e.addEventListener("volumechange", E),
-              e.addEventListener("timeupdate", R),
-              e.addEventListener("click", L),
-              u.addEventListener("click", _),
-              "other" === f && (l.addEventListener("timeupdate", k), (m = !0));
+              e.addEventListener("pause", w),
+              e.addEventListener("ended", E),
+              e.addEventListener("volumechange", L),
+              e.addEventListener("timeupdate", _),
+              e.addEventListener("click", R),
+              l.addEventListener("click", C),
+              "other" === v && (d.addEventListener("timeupdate", k), (g = !0));
           },
           { once: !0 }
         ),
         t.on("clickthrough", (e) => {
           window.open(e);
         });
-      const C = () => {
+      const P = () => {
         e.removeEventListener("play", k),
-          null !== g && g.removeEventListener("error", b),
-          e.removeEventListener("error", b),
-          e.removeEventListener("pause", A),
-          e.removeEventListener("ended", w),
-          e.removeEventListener("volumechange", E),
-          e.removeEventListener("timeupdate", R),
-          e.removeEventListener("click", L),
-          u.removeEventListener("click", _),
-          "other" === f && l.removeEventListener("timeupdate", k);
+          null !== y && y.removeEventListener("error", A),
+          e.removeEventListener("error", A),
+          e.removeEventListener("pause", w),
+          e.removeEventListener("ended", E),
+          e.removeEventListener("volumechange", L),
+          e.removeEventListener("timeupdate", _),
+          e.removeEventListener("click", R),
+          l.removeEventListener("click", C),
+          "other" === v && d.removeEventListener("timeupdate", k);
       };
       t.on("skip", () => {
-        y(), C(), i.log(new s.TerminateError("skip", d));
+        T(), P(), i.log(new s.TerminateError("noError", h));
       }),
         t.on("complete", () => {
-          y(), C(), i.log(new s.TerminateError("skip", d));
+          T(), P(), i.log(new s.TerminateError("noError", h));
         }),
         t.on("skip-countdown", (e) => {
-          h(parseInt(e));
+          p(parseInt(e));
         }),
         t.on("start", () => {}),
         t.on("firstQuartile", () => {}),
@@ -2988,34 +3119,14 @@
   function (e, t, i) {
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
-      (t.you_play = t.you_pause = void 0);
-    const n = (e, t) => {
-      var i;
-      null === (i = e.contentWindow) ||
-        void 0 === i ||
-        i.postMessage(
-          JSON.stringify({ event: "command", func: t, args: [] }),
-          "*"
-        );
-    };
-    (t.you_pause = (e) => {
-      n(e, "pauseVideo");
-    }),
-      (t.you_play = (e) => {
-        n(e, "playVideo");
-      });
-  },
-  function (e, t, i) {
-    "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.DOMClass = void 0);
-    const n = i(35),
-      r = i(36),
-      s = i(39),
-      o = i(41),
-      a = i(45),
-      c = i(49),
-      u = i(50);
+    const n = i(37),
+      r = i(38),
+      s = i(41),
+      o = i(43),
+      a = i(47),
+      c = i(51),
+      u = i(52);
     t.DOMClass = class {
       constructor(e, t, i, n, r, s, o) {
         (this.VirtualDOMPlayer = document.createDocumentFragment()),
@@ -3128,7 +3239,7 @@
               ? "#fc0"
               : "#00a1ff",
           s = document.createElement("style");
-        (s.innerHTML = `\n\n  .df-player {\n    position: absolute;\n    box-sizing: content-box;\n    cursor: pointer;\n    z-index: 9999999999;\n    font-size: 16px;\n  }\n.${
+        (s.innerHTML = `\n\n  .df-player {\n    position: absolute;\n    box-sizing: content-box;\n    cursor: pointer;\n    z-index: 2147483648;\n    font-size: 16px;\n  }\n.${
           e.playYoutube
         } {\n    background: none;\n    border: none;\n    cursor: pointer;\n    speak: none;\n    outline: none;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100%;\n    width: 3em;\n    padding: 0;\n}\n.${
           e.playYoutube
@@ -3176,11 +3287,11 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.appendToRealDOM = void 0);
-    const n = i(37),
+    const n = i(39),
       r = i(1),
-      s = i(9),
-      o = i(38),
-      a = i(10),
+      s = i(12),
+      o = i(40),
+      a = i(13),
       c = (e, t) => {
         (e.style.top = t.y + "px"),
           (e.style.left = t.x + "px"),
@@ -3235,7 +3346,7 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.createVideo = void 0);
-    const n = i(40);
+    const n = i(42);
     t.createVideo = (e) => {
       const t = document.createElement("video");
       return (
@@ -3269,8 +3380,8 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.createControls = void 0);
-    const n = i(11),
-      r = i(42),
+    const n = i(14),
+      r = i(44),
       s = i(4);
     t.createControls = (e) => {
       const t = document.createElement("div");
@@ -3300,9 +3411,9 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.drawPlayButton = void 0);
-    const n = i(11),
-      r = i(43),
-      s = i(44);
+    const n = i(14),
+      r = i(45),
+      s = i(46);
     t.drawPlayButton = (e) => {
       const t = (e) =>
         `<svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">${e}</svg>`;
@@ -3339,12 +3450,12 @@
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.resetPosition = void 0);
     const n = i(3),
-      r = i(46),
-      s = i(47),
+      r = i(48),
+      s = i(49),
       o = i(1),
-      a = i(9),
-      c = i(10),
-      u = i(48),
+      a = i(12),
+      c = i(13),
+      u = i(50),
       l = (e, t) => {
         (e.style.top = t.y + "px"),
           (e.style.left = t.x + "px"),
@@ -3558,11 +3669,11 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.initVPAID = void 0);
-    const n = i(53),
+    const n = i(55),
       r = i(2),
-      s = i(54),
-      o = i(55),
-      a = i(56),
+      s = i(56),
+      o = i(58),
+      a = i(59),
       c = i(3);
     t.initVPAID = (e, t, i, u, l, d, h, p, f, v) => {
       if (!n.checkSpec(e))
@@ -3640,46 +3751,79 @@
   },
   function (e, t, i) {
     "use strict";
-    Object.defineProperty(t, "__esModule", { value: !0 }),
-      (t.listenEvents = void 0);
-    const n = i(2);
-    t.listenEvents = (e, t, i, r, s) => ({
-      AdLoaded: () => {
-        s.displayAd(), t.startAd();
-      },
-      AdVolumeChange: () => {
-        e.addEventListener("volumechange", (e) => {
-          i.setMuted(e.target.muted);
-        });
-      },
-      AdVideoStart: () => {
-        i.trackImpression();
-      },
-      AdPlaying: () => {},
-      AdError: (e) => {
-        r.log(new n.ReinitError(e.message));
-      },
-      AdLog: (e) => {},
-      AdImpression: () => {},
-      AdStopped: () => {
-        i.complete();
-      },
-      AdVideoComplete: () => {},
-      AdUserClose: () => {},
-      AdPaused: () => {},
-      AdClickThru: () => {
-        i.click();
-      },
-      AdVideoFirstQuartile: () => {
-        i.setProgress(25);
-      },
-      AdVideoMidpoint: () => {
-        i.setProgress(50);
-      },
-      AdVideoThirdQuartile: () => {
-        i.setProgress(75);
-      },
-    });
+    (function (e) {
+      Object.defineProperty(t, "__esModule", { value: !0 }),
+        (t.listenEvents = void 0);
+      const n = i(2),
+        r = i(6);
+      t.listenEvents = (t, i, s, o, a) => {
+        let c;
+        return {
+          AdLoaded: () => {
+            i.startAd(),
+              (c = e.setTimeout(() => {
+                o.log(new n.ReinitError("too long load"));
+              }, 5e3));
+          },
+          AdVolumeChange: () => {
+            t.addEventListener("volumechange", (e) => {
+              s.setMuted(e.target.muted);
+            });
+          },
+          AdVideoStart: () => {
+            a.parentNode.click(),
+              s.setPaused(!1),
+              r.stopTargetVideoAction(a.frame, "youtube");
+          },
+          AdStarted: () => {
+            clearTimeout(c),
+              a.displayAd(),
+              a.video.play(),
+              i.resumeAd(),
+              s.trackImpression();
+          },
+          AdPlaying: () => {},
+          AdError: (e) => {
+            o.log(new n.ReinitError(e.message));
+          },
+          AdLog: (e) => {},
+          AdImpression: () => {},
+          AdStopped: () => {
+            s.complete();
+          },
+          AdVideoComplete: () => {},
+          AdUserClose: () => {},
+          AdPaused: () => {},
+          AdClickThru: () => {
+            s.click();
+          },
+          AdVideoFirstQuartile: () => {
+            s.setProgress(25);
+          },
+          AdVideoMidpoint: () => {
+            s.setProgress(50);
+          },
+          AdVideoThirdQuartile: () => {
+            s.setProgress(75);
+          },
+          AdDurationChange: () => {},
+          AdInteraction: () => {},
+          AdUserAcceptInvitation: () => {},
+        };
+      };
+    }.call(this, i(57)));
+  },
+  function (e, t) {
+    var i;
+    i = (function () {
+      return this;
+    })();
+    try {
+      i = i || new Function("return this")();
+    } catch (n) {
+      "object" == typeof window && (i = window);
+    }
+    e.exports = i;
   },
   function (e, t, i) {
     "use strict";
@@ -3716,7 +3860,7 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.sendMessage = void 0);
-    const n = i(59);
+    const n = i(62);
     t.sendMessage = (e) => {
       n.isIframe(e) &&
         (e.onload = () => {
@@ -3754,21 +3898,23 @@
       (t.startListening = void 0);
     const n = i(4);
     t.startListening = (e, t) => {
+      let i = !1;
       window.addEventListener("message", () => {}, { once: !0 }),
-        window.addEventListener("message", (i) => {
+        window.addEventListener("message", (r) => {
           try {
-            var r = JSON.parse(i.data);
-          } catch (s) {}
+            var s = JSON.parse(r.data);
+          } catch (o) {}
           if (
-            "https://www.youtube.com" === i.origin &&
-            void 0 !== i.data &&
-            r.id === e.frame.id
+            "https://www.youtube.com" === r.origin &&
+            void 0 !== r.data &&
+            s.id === e.frame.id
           )
             try {
-              if ("onStateChange" !== r.event) return;
-              setTimeout(e.autoPlayFn, 0),
-                1 === r.info && t.dispatchEvent(n.playEvent);
-            } catch (i) {}
+              if ("onStateChange" !== s.event) return;
+              !1 === i && setTimeout(e.autoPlayFn, 0),
+                (i = !0),
+                1 === s.info && t.dispatchEvent(n.playEvent);
+            } catch (r) {}
         });
     };
   },
@@ -3776,7 +3922,7 @@
     "use strict";
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.isZeroSize = void 0);
-    const n = i(62),
+    const n = i(65),
       r = i(3);
     t.isZeroSize = (e) => {
       if (null !== n.findFlowplayer) return !1;
