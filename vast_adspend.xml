@@ -1,0 +1,36 @@
+<VAST version="3.0">
+	<Ad>
+		<InLine>
+			<AdSystem>ADSpend</AdSystem>
+			<Impression><![CDATA[http://rtb.com.ru/event?type=win&price=98.019798&tracking=62da710eec935531c5829af6]]></Impression>
+			<Impression><![CDATA[http://rtb.com.ru/counter/action?id=digitalfrontiershow]]></Impression>
+			<Creatives>
+				<Creative>
+					<Linear>
+						<Duration>00:00:20</Duration>
+						<TrackingEvents>
+							<Tracking event="start"><![CDATA[http://rtb.com.ru/event?type=load&tracking=62da710eec935531c5829af6]]></Tracking>
+							<Tracking event="creativeView"><![CDATA[http://rtb.com.ru/event?type=view&tracking=62da710eec935531c5829af6]]></Tracking>
+							<Tracking event="firstQuartile"><![CDATA[http://rtb.com.ru/event?type=firstQuartile&tracking=62da710eec935531c5829af6]]></Tracking>
+							<Tracking event="midpoint"><![CDATA[http://rtb.com.ru/event?type=midpoint&tracking=62da710eec935531c5829af6]]></Tracking>
+							<Tracking event="thirdQuartile"><![CDATA[http://rtb.com.ru/event?type=thirdQuartile&tracking=62da710eec935531c5829af6]]></Tracking>
+							<Tracking event="complete"><![CDATA[http://rtb.com.ru/event?type=complete&tracking=62da710eec935531c5829af6]]></Tracking>
+							<Tracking event="skip"><![CDATA[http://rtb.com.ru/event?type=close&tracking=62da710eec935531c5829af6]]></Tracking>
+							<Tracking event="unmute"><![CDATA[http://rtb.com.ru/event?type=unmute&tracking=62da710eec935531c5829af6]]></Tracking>
+						</TrackingEvents>
+						<MediaFiles>
+							<MediaFile delivery="progressive" type="video/mp4"><![CDATA[http://cdn.rtb.com.ru/62d556057e34d7dfd71535ab.mp4]]></MediaFile>
+						</MediaFiles>
+						<VideoClicks>
+							<ClickThrough><![CDATA[http://rtb.com.ru/event?type=click&server=true&tracking=62da710eec935531c5829af6]]></ClickThrough>
+							<ClickTracking><![CDATA[http://rtb.com.ru/counter/action?id=digitalfrontierclick]]></ClickTracking>
+							<ClickTracking><![CDATA[https://check.fraudscore.mobi/?event_type=click&key=2285dd1ed4ce90d3702a86646aa9e321&affiliate_id=ssp57&advertiser_id=57ac99ad558c522d0155b33f&aff_sub1=62d5552a1504a02094649eb5&refer=tedadvert.github.io&at=1658482958&ip=95.79.109.64&ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36]]></ClickTracking>
+						</VideoClicks>
+					</Linear>
+					<CompanionAds></CompanionAds>
+				</Creative>
+			</Creatives>
+			<Error></Error>
+		</InLine>
+	</Ad>
+</VAST>
